@@ -14,16 +14,16 @@ final TextTheme myTextTheme = TextTheme(
       GoogleFonts.libreBaskerville(fontSize: 24, fontWeight: FontWeight.w400),
   headline6: GoogleFonts.libreBaskerville(
       fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.15),
-  subtitle1: GoogleFonts.libreBaskerville(
-      fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
-  subtitle2: GoogleFonts.libreBaskerville(
+  subtitle1: GoogleFonts.manuale(
+      fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+  subtitle2: GoogleFonts.manuale(
       fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
   bodyText1: GoogleFonts.manuale(
       fontSize: 17, fontWeight: FontWeight.w400, letterSpacing: 0.5),
   bodyText2: GoogleFonts.manuale(
       fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.25),
   button: GoogleFonts.manuale(
-      fontSize: 15, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+      fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.75),
   caption: GoogleFonts.manuale(
       fontSize: 13,
       fontWeight: FontWeight.w400,

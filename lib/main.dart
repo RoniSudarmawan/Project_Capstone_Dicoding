@@ -1,5 +1,5 @@
 import 'package:capstone_project/style/text_style.dart';
-import 'package:capstone_project/user_interface/homepage_screen/recommended_list_screen.dart';
+import 'package:capstone_project/user_interface/login_screen/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: myTextTheme,
       ),
-      home: RecommendedListScreen(),
+      home: const LandingScreen(),
     );
   }
 }
