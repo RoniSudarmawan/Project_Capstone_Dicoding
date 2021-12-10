@@ -1,5 +1,4 @@
 import 'package:capstone_project/style/color_style.dart';
-import 'package:capstone_project/user_interface/widget/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,28 +11,20 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: primaryColor900,
       body: Column(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 6.0),
-                child: IconButton(
-                    color: primaryColor600,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios_rounded,
-                      color: primaryColor100,
-                    )),
-              ),
-              Text(
-                "Profile",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(color: primaryColor100),
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Profile",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: primaryColor100),
+                )
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +173,10 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, '/ChangePasswordScreen');
+                          },
                           icon: const Icon(
                             Icons.arrow_forward_ios_rounded,
                             color: Colors.black,
@@ -208,7 +202,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/');
+                          },
                           icon: const Icon(
                             Icons.arrow_forward_ios_rounded,
                             color: Colors.black,
@@ -222,7 +218,6 @@ class ProfileScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:capstone_project/style/color_style.dart';
 import 'package:capstone_project/user_interface/widget/list_grid_view.dart';
 import 'package:flutter/material.dart';
 
-class RecommendedListScreen extends StatelessWidget {
-  const RecommendedListScreen({Key? key}) : super(key: key);
+class NewestProductScreen extends StatelessWidget {
+  const NewestProductScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class RecommendedListScreen extends StatelessWidget {
                 )),
             Center(
                 child: Text(
-              "Recommended For You",
+              "Newest Product",
               style: Theme.of(context)
                   .textTheme
                   .headline6

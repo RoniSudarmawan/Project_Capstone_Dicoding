@@ -120,7 +120,10 @@ class LoginScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 24.0),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                    context, '/PageHelper');
+                              },
                               style: ElevatedButton.styleFrom(
                                   primary: primaryColor900,
                                   shape: const StadiumBorder(),
@@ -175,7 +178,10 @@ class LoginScreen extends StatelessWidget {
                                 style: Theme.of(context).textTheme.subtitle1,
                               ),
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushReplacementNamed(
+                                        context, '/SignupScreen');
+                                  },
                                   child: Text(
                                     "Sign Up",
                                     style: Theme.of(context)

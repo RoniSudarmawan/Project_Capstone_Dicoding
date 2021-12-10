@@ -300,7 +300,9 @@ class PaymentScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/PageHelper');
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: primaryColor900,
                   ),

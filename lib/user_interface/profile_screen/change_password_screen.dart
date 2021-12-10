@@ -1,5 +1,4 @@
 import 'package:capstone_project/style/color_style.dart';
-import 'package:capstone_project/user_interface/widget/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
@@ -117,7 +116,10 @@ class ChangePasswordScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 18.0),
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/ProfileScreen');
+                          },
                           style: ElevatedButton.styleFrom(
                               primary: primaryColor900,
                               shape: const StadiumBorder(),
@@ -137,7 +139,6 @@ class ChangePasswordScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

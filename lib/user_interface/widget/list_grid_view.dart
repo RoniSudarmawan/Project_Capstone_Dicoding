@@ -1,3 +1,4 @@
+import 'package:capstone_project/style/color_style.dart';
 import 'package:flutter/material.dart';
 
 class ListGridView extends StatelessWidget {
@@ -13,12 +14,14 @@ class ListGridView extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/DetailScreen');
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(30, 62, 219, 240),
+                  decoration: BoxDecoration(
+                    color: surface,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: Column(

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "118245812294",
+    "project_id": "clothal-capstone-project",
+    "storage_bucket": "clothal-capstone-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118245812294:android:86e517ae06897285ce8247",
+        "android_client_info": {
+          "package_name": "com.dicoding.clothal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118245812294-54dolo04u7akrlg1ghp9ccb6o3i9vah9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-eJo6LtO1pjP9ckTv0ahmmymk5z9Krp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118245812294-54dolo04u7akrlg1ghp9ccb6o3i9vah9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,5 @@
 import 'package:capstone_project/style/color_style.dart';
-import 'package:capstone_project/user_interface/homepage_screen/horizontal_list_widget.dart';
-import 'package:capstone_project/user_interface/widget/bottom_nav_bar.dart';
+import 'package:capstone_project/user_interface/widget/horizontal_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomepageScreen extends StatelessWidget {
@@ -8,7 +7,6 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -34,14 +32,14 @@ class HomepageScreen extends StatelessWidget {
               child: SizedBox(
                   height: 35,
                   child: TextField(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/SearchScreen');
+                    },
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: surface,
-                      suffixIcon: InkWell(
-                        child: const Icon(
-                          Icons.search,
-                        ),
-                        onTap: () {},
+                      suffixIcon: const Icon(
+                        Icons.search,
                       ),
                       hintText: 'search',
                       contentPadding: const EdgeInsets.all(10),
@@ -64,11 +62,16 @@ class HomepageScreen extends StatelessWidget {
                         .headline6
                         ?.copyWith(fontWeight: FontWeight.w600),
                   ),
-                  Text(
-                    "see all",
-                    style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        decoration: TextDecoration.underline,
-                        color: primaryColor100),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/RecommendedListScreen');
+                    },
+                    child: Text(
+                      "see all",
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: primaryColor100),
+                    ),
                   ),
                 ],
               ),
@@ -86,11 +89,16 @@ class HomepageScreen extends StatelessWidget {
                         .headline6
                         ?.copyWith(fontWeight: FontWeight.w600),
                   ),
-                  Text(
-                    "see all",
-                    style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                        decoration: TextDecoration.underline,
-                        color: primaryColor100),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/NewestProductScreen');
+                    },
+                    child: Text(
+                      "see all",
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: primaryColor100),
+                    ),
                   ),
                 ],
               ),
@@ -99,7 +107,6 @@ class HomepageScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

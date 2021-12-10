@@ -49,7 +49,9 @@ class LandingScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 52.0, bottom: 8.0),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/LoginScreen');
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                       shape: const StadiumBorder(),
@@ -63,7 +65,9 @@ class LandingScreen extends StatelessWidget {
                   )),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/SignupScreen');
+                },
                 style: ElevatedButton.styleFrom(
                     side: BorderSide(
                       color: Colors.white,

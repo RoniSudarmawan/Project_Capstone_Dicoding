@@ -14,7 +14,9 @@ class HorizontalList extends StatelessWidget {
           itemCount: 15,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/DetailScreen');
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
