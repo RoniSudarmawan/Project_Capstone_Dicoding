@@ -1,5 +1,4 @@
 buildscript {
-    applicationId "com.dicoding.clothal"
     ext.kotlin_version = '1.3.50'
     repositories {
         google()

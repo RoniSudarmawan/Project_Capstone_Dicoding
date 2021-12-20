@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                  padding: const EdgeInsets.only(bottom: 40, top: 24),
+                  padding: const EdgeInsets.only(bottom: 32, top: 24),
                   child: Container(
                     height: 100,
                     width: 100,
@@ -72,25 +72,6 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Text(
                           "I Komang Roni Sudarmawan",
-                          style: Theme.of(context).textTheme.bodyText2,
-                        ),
-                        Divider(
-                          thickness: 2,
-                          color: primaryColor100,
-                          endIndent: 28.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(
-                            "Username:",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(color: primaryColor100),
-                          ),
-                        ),
-                        Text(
-                          "roni_sudarmawan",
                           style: Theme.of(context).textTheme.bodyText2,
                         ),
                         Divider(
@@ -155,11 +136,55 @@ class ProfileScreen extends StatelessWidget {
                           color: primaryColor100,
                           endIndent: 28.0,
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            "Alamat:",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(color: primaryColor100),
+                          ),
+                        ),
+                        Text(
+                          "Jalan Kenangan No. 5, Seririt",
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        Divider(
+                          thickness: 2,
+                          color: primaryColor100,
+                          endIndent: 28.0,
+                        ),
                       ],
                     ),
                   ),
                   Divider(
                     thickness: 4,
+                    color: primaryColor100,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 28.0),
+                        child: Text(
+                          "Ubah Profil",
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/EditProfileScreen');
+                          },
+                          icon: const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.black,
+                            size: 15,
+                          ))
+                    ],
+                  ),
+                  Divider(
+                    thickness: 2,
                     color: primaryColor100,
                   ),
                   Row(
@@ -203,7 +228,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/');
+                            Navigator.pushNamed(context, '/LoginScreen');
                           },
                           icon: const Icon(
                             Icons.arrow_forward_ios_rounded,

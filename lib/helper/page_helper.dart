@@ -15,7 +15,7 @@ class PageHelper extends StatefulWidget {
 
 class _PageHelperState extends State<PageHelper> {
   final _controller = PageController(
-    initialPage: 2,
+    initialPage: 0,
   );
 
   List<String> asset = [
