@@ -1,5 +1,4 @@
 import 'package:capstone_project/style/color_style.dart';
-import 'package:capstone_project/user_interface/widget/list_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class NewestProductScreen extends StatelessWidget {
@@ -31,7 +30,7 @@ class NewestProductScreen extends StatelessWidget {
                   .headline6
                   ?.copyWith(fontWeight: FontWeight.w600),
             )),
-            const ListGridView(),
+            // const ListGridView(),
           ],
         ),
       ),

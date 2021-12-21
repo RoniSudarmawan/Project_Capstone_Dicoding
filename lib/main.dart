@@ -33,15 +33,14 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => AuthenticationProvider(service: Authentication()),
       child: MaterialApp(
-        title: 'Clothal',
         theme: ThemeData(
           textTheme: myTextTheme,
         ),
         home: Consumer<AuthenticationProvider>(builder: (context, snapshot, _) {
           if (snapshot.isSignIn) {
-            return PageHelper();
+            return const PageHelper();
           } else {
-            return LandingScreen();
+            return const LandingScreen();
           }
         }),
         routes: {

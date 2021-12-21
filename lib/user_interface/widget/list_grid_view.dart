@@ -1,8 +1,12 @@
+import 'package:capstone_project/model/list_clothes_model.dart';
 import 'package:capstone_project/style/color_style.dart';
 import 'package:flutter/material.dart';
 
 class ListGridView extends StatelessWidget {
-  const ListGridView({Key? key}) : super(key: key);
+  final List<ListClothes> clothes;
+  final BuildContext context;
+  const ListGridView({Key? key, required this.clothes, required this.context})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,7 @@ class ListGridView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 8.0, bottom: 2.0, top: 10.0),
-                        child: Text("Green Suit",
+                        child: Text(clothes[index].name,
                             style: Theme.of(context).textTheme.subtitle2),
                       ),
                       Row(
@@ -50,7 +54,7 @@ class ListGridView extends StatelessWidget {
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                            child: Text("Rp. 100.000/hari",
+                            child: Text(clothes[index].price + "/hari",
                                 style: Theme.of(context).textTheme.caption),
                           ),
                           Padding(

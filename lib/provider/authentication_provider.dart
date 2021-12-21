@@ -1,9 +1,8 @@
 import 'package:capstone_project/database/authentication.dart';
+import 'package:capstone_project/helper/result_state.dart';
 import 'package:capstone_project/model/data_user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-enum ResultState { isLoading, hasData, noData, isError, finished }
 
 class AuthenticationProvider extends ChangeNotifier {
   Authentication service;
@@ -31,7 +30,7 @@ class AuthenticationProvider extends ChangeNotifier {
     } else {
       _isSignIn = true;
     }
-    _state = ResultState.finished;
+    _state = ResultState.isSuccess;
     notifyListeners();
   }
 

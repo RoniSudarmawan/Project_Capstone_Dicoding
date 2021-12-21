@@ -62,7 +62,8 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
-                      child: TextField(
+                      child: TextFormField(
+                        initialValue: "I Komang Roni Sudarmawan",
                         decoration: InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide:
@@ -84,7 +85,8 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
-                      child: TextField(
+                      child: TextFormField(
+                        initialValue: "ronnysudarmawan17@gmail.com",
                         decoration: InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide:
@@ -106,7 +108,8 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
-                      child: TextField(
+                      child: TextFormField(
+                        initialValue: "081234568",
                         decoration: InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide:

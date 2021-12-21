@@ -28,8 +28,8 @@ class DataUser {
         phone: data["phone"],
         address: data["address"],
         bornDate: data["bornDate"],
-        createDate: data["createdAt"],
-        updateDate: data["updatedAt"],
+        createDate: data["createDate"],
+        updateDate: data["updateDate"],
         imageUrl: data["imageUrl"],
       );
 
@@ -39,8 +39,8 @@ class DataUser {
         "phone": phone,
         "address": address,
         "bornDate": bornDate,
-        "createdAt": createDate,
-        "updatedAt": updateDate,
+        "createDate": createDate,
+        "updateDate": updateDate,
         "imageUrl": imageUrl,
       };
 }
