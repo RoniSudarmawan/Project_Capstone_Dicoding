@@ -2,13 +2,13 @@ import 'package:capstone_project/database/authentication.dart';
 import 'package:capstone_project/helper/page_helper.dart';
 import 'package:capstone_project/provider/authentication_provider.dart';
 import 'package:capstone_project/style/text_style.dart';
+import 'package:capstone_project/user_interface/authentication_screen/landing_screen.dart';
+import 'package:capstone_project/user_interface/authentication_screen/login_screen.dart';
+import 'package:capstone_project/user_interface/authentication_screen/signup_screen.dart';
 import 'package:capstone_project/user_interface/detail_screen/detail_screen.dart';
 import 'package:capstone_project/user_interface/homepage_screen/homepage_screen.dart';
 import 'package:capstone_project/user_interface/homepage_screen/newest_product_screen.dart';
 import 'package:capstone_project/user_interface/homepage_screen/recommended_list_screen.dart';
-import 'package:capstone_project/user_interface/login_screen/landing_screen.dart';
-import 'package:capstone_project/user_interface/login_screen/login_screen.dart';
-import 'package:capstone_project/user_interface/login_screen/signup_screen.dart';
 import 'package:capstone_project/user_interface/notification_screen/notification_screen.dart';
 import 'package:capstone_project/user_interface/payment_screen/payment_screen.dart';
 import 'package:capstone_project/user_interface/profile_screen/change_password_screen.dart';
@@ -50,7 +50,9 @@ class MyApp extends StatelessWidget {
           '/PageHelper': (context) => PageHelper(),
           '/PaymentScreen': (context) => PaymentScreen(),
           '/HomepageScreen': (context) => HomepageScreen(),
-          '/DetailScreen': (context) => DetailScreen(),
+          '/DetailScreen': (context) => DetailScreen(
+                clothesId: ModalRoute.of(context)?.settings.arguments as String,
+              ),
           '/RecommendedListScreen': (context) => RecommendedListScreen(),
           '/NewestProductScreen': (context) => NewestProductScreen(),
           '/ProfileScreen': (context) => ProfileScreen(),

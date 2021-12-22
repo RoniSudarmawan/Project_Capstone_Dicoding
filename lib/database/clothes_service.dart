@@ -1,3 +1,4 @@
+import 'package:capstone_project/model/data_clothes_model.dart';
 import 'package:capstone_project/model/list_clothes_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -16,7 +17,7 @@ class ClothesService {
     return _clothesList;
   }
 
-  Future<List<ListClothes>> getListDataSearch(String query) async {
+  Future<List<ListClothes>> getListClothesSearch(String query) async {
     final filteredData = (await _clothesData.get()).docs.map((e) {
       if (e
           .data()['name']
@@ -37,5 +38,17 @@ class ClothesService {
     }
 
     return _clothesList;
+  }
+
+  // Future<List<ListClothes>> getListClothesFilter(
+  //     String category, String SortBy) async {}
+
+  Future<DataClothes> getDetailData(String id) async {
+    final snapshotData = await _clothesData.doc(id).get();
+    final snapshotReview =
+        await _clothesData.doc(id).collection("reviews").get();
+    DataClothes _clothesDetail =
+        DataClothes.fromObject(snapshotData, snapshotReview);
+    return _clothesDetail;
   }
 }

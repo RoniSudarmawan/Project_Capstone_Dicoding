@@ -3,17 +3,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ListClothes {
   late String id;
   late String name;
-  late String price;
+  late int price;
+  late String category;
   late String description;
   late String? productImageUrl;
+  late String shopName;
+  late String shopLocation;
   late Timestamp createDate;
 
-  ListClothes.fromObject(dynamic data) {
+  ListClothes.fromObject(QueryDocumentSnapshot<Map<String, dynamic>> data) {
     id = data["id"];
     name = data["name"];
     price = data["price"];
+    category = data["category"];
     description = data["description"];
     productImageUrl = data["productImageUrl"];
-    createDate = data["createdAt"];
+    shopName = data["shopName"];
+    shopLocation = data["shopLocation"];
+    createDate = data["createDate"];
   }
 }

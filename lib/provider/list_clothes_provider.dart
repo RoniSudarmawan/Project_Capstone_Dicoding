@@ -27,6 +27,24 @@ class ListClothesProvider extends ChangeNotifier {
         _state = ResultState.noData;
       }
     } catch (e) {
+      print(e);
+      _state = ResultState.isError;
+    }
+    notifyListeners();
+  }
+
+  searchClothes(String query) async {
+    _state = ResultState.isLoading;
+    notifyListeners();
+    try {
+      final snapshot = await clothesService.getListClothesSearch(query);
+      if (snapshot.isNotEmpty) {
+        _listClothes = snapshot;
+        _state = ResultState.hasData;
+      } else {
+        _state = ResultState.noData;
+      }
+    } catch (e) {
       _state = ResultState.isError;
     }
     notifyListeners();

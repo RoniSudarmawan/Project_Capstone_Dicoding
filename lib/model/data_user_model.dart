@@ -4,9 +4,9 @@ class DataUser {
   DataUser({
     required this.name,
     required this.email,
-    this.phone,
+    this.phoneNumber,
     this.address,
-    required this.bornDate,
+    this.bornDate,
     required this.createDate,
     required this.updateDate,
     this.imageUrl,
@@ -14,9 +14,9 @@ class DataUser {
 
   final String name;
   final String email;
-  final String? phone;
+  final String? phoneNumber;
   final String? address;
-  final Timestamp bornDate;
+  final Timestamp? bornDate;
   final Timestamp createDate;
   final Timestamp updateDate;
   final String? imageUrl;
@@ -25,7 +25,7 @@ class DataUser {
       DataUser(
         name: data["name"],
         email: data["email"],
-        phone: data["phone"],
+        phoneNumber: data["phoneNumber"],
         address: data["address"],
         bornDate: data["bornDate"],
         createDate: data["createDate"],
@@ -36,7 +36,7 @@ class DataUser {
   Map<String, dynamic> toObject() => {
         "name": name,
         "email": email,
-        "phone": phone,
+        "phoneNumber": phoneNumber,
         "address": address,
         "bornDate": bornDate,
         "createDate": createDate,

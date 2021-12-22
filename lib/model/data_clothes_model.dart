@@ -6,16 +6,22 @@ class DataClothes {
     required this.name,
     required this.price,
     required this.description,
+    required this.category,
     this.productImageUrl,
+    required this.shopName,
+    required this.shopLocation,
     required this.createDate,
     required this.review,
   });
 
   late String id;
   late String name;
-  late String price;
+  late int price;
   late String description;
+  late String category;
   late String? productImageUrl;
+  late String shopName;
+  late String shopLocation;
   late Timestamp createDate;
   late List<DataReview> review;
 
@@ -24,9 +30,12 @@ class DataClothes {
     id = data["id"];
     name = data["name"];
     price = data["price"];
+    category = data["category"];
     description = data["description"];
     productImageUrl = data["productImageUrl"];
-    createDate = data["createdAt"];
+    shopName = data["shopName"];
+    shopLocation = data["shopLocation"];
+    createDate = data["createDate"];
     review = reviewData.docs.map((e) => DataReview.fromObject(e)).toList();
   }
 
@@ -35,8 +44,11 @@ class DataClothes {
         "name": name,
         "price": price,
         "description": description,
+        "category": category,
         "productImageUrl": productImageUrl,
-        "createdDate": createDate,
+        "shopName": shopName,
+        "shopLocation": shopLocation,
+        "createDate": createDate,
         "dataClothes": List<dynamic>.from(review.map((x) => x.toObject())),
       };
 }
@@ -46,26 +58,22 @@ class DataReview {
     required this.reviewName,
     required this.reviewDate,
     required this.reviewContent,
-    this.shopImageUrl,
   });
 
   final String reviewName;
-  final String reviewDate;
+  final Timestamp reviewDate;
   final String reviewContent;
-  final String? shopImageUrl;
 
   factory DataReview.fromObject(DocumentSnapshot<Map<String, dynamic>> data) =>
       DataReview(
         reviewName: data["reviewName"],
         reviewDate: data["reviewDate"],
         reviewContent: data["reviewContent"],
-        shopImageUrl: data["shopImageUrl"],
       );
 
   Map<String, dynamic> toObject() => {
         "reviewName": reviewName,
         "reviewDate": reviewDate,
         "reviewContent": reviewContent,
-        "shopImageUrl": shopImageUrl,
       };
 }

@@ -30,7 +30,6 @@ class NewestProductScreen extends StatelessWidget {
                   .headline6
                   ?.copyWith(fontWeight: FontWeight.w600),
             )),
-            // const ListGridView(),
           ],
         ),
       ),

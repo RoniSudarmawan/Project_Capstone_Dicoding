@@ -14,10 +14,11 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  TextEditingController searchTextController = TextEditingController();
   var _urutan = "Default";
   var _kategori = "Semua";
   List<String> kategori = ['Semua', 'Jas', 'Kebaya', 'Kemeja', 'Aksesoris'];
-  List<String> urutan = ['Default', 'Populer', 'Terbaru', 'Terlama'];
+  List<String> urutan = ['Default', 'Terbaru', 'Terlama'];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,131 +27,165 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 36.0, bottom: 12),
-                  child: SizedBox(
-                      height: 35,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: surface,
-                          suffixIcon: InkWell(
-                            child: const Icon(
-                              Icons.search,
+          child: Consumer<ListClothesProvider>(
+              builder: (context, snapshot, child) {
+            return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 36.0, bottom: 12),
+                    child: SizedBox(
+                        height: 35,
+                        child: TextField(
+                          controller: searchTextController,
+                          onSubmitted: (query) {
+                            Provider.of<ListClothesProvider>(context,
+                                    listen: false)
+                                .searchClothes(query);
+                          },
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: surface,
+                            suffixIcon: InkWell(
+                              child: const Icon(
+                                Icons.search,
+                              ),
+                              onTap: () {},
                             ),
-                            onTap: () {},
+                            hintText: 'search',
+                            contentPadding: const EdgeInsets.all(10),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                          hintText: 'search',
-                          contentPadding: const EdgeInsets.all(10),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10),
+                        )),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Text('Kategori :',
+                                style: Theme.of(context).textTheme.bodyText2),
                           ),
-                        ),
-                      )),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Text('Kategori :',
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                            left: size.width / 30,
+                          Container(
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: primaryColor900,
+                                borderRadius: BorderRadius.circular(20)),
+                            padding: EdgeInsets.only(
+                              left: size.width / 30,
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                  elevation: 0,
+                                  hint: Text(_kategori,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .copyWith(color: Colors.white)),
+                                  items: kategori.map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                        value: value, child: Text(value));
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _kategori = value!;
+                                    });
+                                  }),
+                            ),
                           ),
-                          width: 130,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: primaryColor900,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                                elevation: 0,
-                                hint: Text(_kategori,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2!
-                                        .copyWith(color: Colors.white)),
-                                items: kategori.map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                      value: value, child: Text(value));
-                                }).toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    _kategori = value!;
-                                  });
-                                }),
+                        ],
+                      ),
+                      SizedBox(
+                        width: size.width / 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Text('Urutan :',
+                                style: Theme.of(context).textTheme.bodyText2),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Text('Urutan :',
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              left: size.width / 30, right: size.width / 100),
-                          width: 130,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: primaryColor900,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                                elevation: 0,
-                                hint: Text(_urutan,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2!
-                                        .copyWith(color: Colors.white)),
-                                items: urutan.map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                      value: value, child: Text(value));
-                                }).toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    _urutan = value!;
-                                  });
-                                }),
+                          Container(
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: primaryColor900,
+                                borderRadius: BorderRadius.circular(20)),
+                            padding: EdgeInsets.only(
+                              left: size.width / 30,
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                  elevation: 0,
+                                  hint: Text(_urutan,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .copyWith(color: Colors.white)),
+                                  items: urutan.map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                        value: value, child: Text(value));
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _urutan = value!;
+                                    });
+                                  }),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Consumer<ListClothesProvider>(
-                  builder: (context, snapshot, child) {
-                    if (snapshot.state == ResultState.hasData) {
-                      final clothes = snapshot.listClothes;
-                      return ListGridView(
-                        context: context,
-                        clothes: clothes,
-                      );
-                    } else {
-                      return const Center(
-                        child:
-                            Text("Aplikasi Gagal Dimuat, Silahkan Coba Lagi!"),
-                      );
-                    }
-                  },
-                )
-              ]),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Consumer<ListClothesProvider>(
+                    builder: (context, snapshot, child) {
+                      if (snapshot.state == ResultState.hasData) {
+                        final clothes = snapshot.listClothes;
+                        return ListGridView(
+                          context: context,
+                          clothes: clothes,
+                        );
+                      } else if (snapshot.state == ResultState.isLoading) {
+                        return Padding(
+                          padding: EdgeInsets.only(top: size.height / 3),
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      } else if (snapshot.state == ResultState.noData) {
+                        return Padding(
+                          padding: EdgeInsets.only(top: size.height / 3),
+                          child: Center(
+                            child: Text(
+                              "Data Tidak Ditemukan",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: EdgeInsets.only(top: size.height / 3),
+                          child: Center(
+                            child: Text(
+                              "Aplikasi Gagal Dimuat, Silahkan Coba Lagi!",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  )
+                ]);
+          }),
         ),
       ),
     );

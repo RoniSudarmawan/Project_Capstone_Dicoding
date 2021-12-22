@@ -1,28 +1,20 @@
 import 'package:capstone_project/provider/authentication_provider.dart';
 import 'package:capstone_project/style/color_style.dart';
-import 'package:capstone_project/user_interface/login_screen/password_text_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:capstone_project/user_interface/authentication_screen/password_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class SignupScreen extends StatelessWidget {
+  SignupScreen({Key? key}) : super(key: key);
+  TextEditingController nameTextController = TextEditingController();
   TextEditingController emailTextController = TextEditingController();
+  TextEditingController bornDateTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
+  TextEditingController retypePasswordTextController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
   final _formKey = GlobalKey<FormState>();
-  @override
-  void dispose() {
-    emailTextController.dispose();
-    passwordTextController.dispose();
-    super.dispose();
-  }
 
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -49,19 +41,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 40, top: 24),
-                    child: Container(
-                      child: Icon(
-                        Icons.all_inclusive,
-                        size: 100,
-                        color: primaryColor100,
-                      ),
-                    )),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40, top: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Sign Up",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(color: Colors.white),
+                  ),
+                  Text(
+                    "Register Your New Account",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Container(
@@ -82,22 +82,42 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
-                            child: Text(
-                              "Welcome Back",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline4!
-                                  .copyWith(color: primaryColor900),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: 8.0, top: 10.0),
+                            child: TextField(
+                              controller: nameTextController,
+                              decoration: InputDecoration(
+                                hintText: "Nama",
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                              ),
                             ),
                           ),
-                          Center(
-                            child: Text(
-                              "Login to Your Account",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(color: primaryColor600),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: 8.0, top: 10.0),
+                            child: TextField(
+                              controller: bornDateTextController,
+                              readOnly: true,
+                              onTap: () => _selectedDate(context),
+                              decoration: InputDecoration(
+                                hintText: "Tanggal Lahir",
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                              ),
                             ),
                           ),
                           Padding(
@@ -119,10 +139,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 8.0, top: 10.0),
+                              child: PasswordTextField(
+                                  passwordTextController:
+                                      passwordTextController)),
+                          Padding(
                             padding:
                                 const EdgeInsets.only(bottom: 8.0, top: 10.0),
-                            child: PasswordTextField(
-                                passwordTextController: passwordTextController),
+                            child: TextField(
+                              controller: retypePasswordTextController,
+                              decoration: InputDecoration(
+                                hintText: "Re-type Password",
+                                suffixIcon: const Padding(
+                                  padding: EdgeInsets.only(top: 5.0),
+                                  child: Icon(Icons.remove_red_eye),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: primaryColor900, width: 2),
+                                ),
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 24.0),
@@ -133,23 +175,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                         Provider.of<AuthenticationProvider>(
                                             context,
                                             listen: false);
-                                    await result.login(
+                                    await result.signUp(
                                       emailTextController.text,
                                       passwordTextController.text,
+                                      nameTextController.text,
+                                      DateTime.parse(
+                                          bornDateTextController.text),
                                     );
                                     if (result.isSignIn) {
                                       Navigator.pushReplacementNamed(
-                                          context, '/PageHelper');
-                                    }
-                                  } on FirebaseAuthException catch (e) {
-                                    late String message;
-                                    if (e.code == 'user-not-found') {
-                                      message = 'No user found for that email.';
-                                    } else if (e.code == 'wrong-password') {
-                                      message =
-                                          'Wrong password provided for that user.';
-                                    } else {
-                                      message = e.toString();
+                                          context, '/LoginScreen');
                                     }
                                   } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -161,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     shape: const StadiumBorder(),
                                     fixedSize: Size(size.width, 20)),
                                 child: Text(
-                                  "Login",
+                                  "Sign Up",
                                   style: Theme.of(context)
                                       .textTheme
                                       .button!
@@ -170,52 +205,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
-                            child: Center(
-                                child: Text(
-                              "or login with:",
-                              style: Theme.of(context).textTheme.subtitle1,
-                            )),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.flight,
-                                      size: 50,
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.flight,
-                                      size: 50,
-                                    )),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
+                            padding: const EdgeInsets.only(top: 36.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Tidak Punya Akun?",
+                                  "Sudah Punya Akun?",
                                   style: Theme.of(context).textTheme.subtitle1,
                                 ),
                                 TextButton(
                                     onPressed: () {
                                       Navigator.pushReplacementNamed(
-                                          context, '/SignupScreen');
+                                          context, '/LoginScreen');
                                     },
                                     child: Text(
-                                      "Sign Up",
+                                      "Login",
                                       style: Theme.of(context)
                                           .textTheme
                                           .subtitle1!
@@ -237,5 +241,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<Null> _selectedDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(selectedDate.year - 60),
+        lastDate: DateTime(selectedDate.year + 1));
+    if (picked != null && picked != selectedDate) {
+      selectedDate = picked;
+    }
+    bornDateTextController.text = selectedDate.toString();
   }
 }
