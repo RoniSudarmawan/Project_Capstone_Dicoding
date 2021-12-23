@@ -1,6 +1,6 @@
 import 'package:capstone_project/style/color_style.dart';
 import 'package:capstone_project/user_interface/homepage_screen/homepage_screen.dart';
-import 'package:capstone_project/user_interface/notification_screen/notification_screen.dart';
+import 'package:capstone_project/user_interface/rent_history_screen/rent_history_screen.dart';
 import 'package:capstone_project/user_interface/profile_screen/profile_screen.dart';
 import 'package:capstone_project/user_interface/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class _PageHelperState extends State<PageHelper> {
           children: const <Widget>[
             HomepageScreen(),
             SearchScreen(),
-            NotificationScreen(),
+            RentHistoryScreen(),
             ProfileScreen(),
           ],
         ),

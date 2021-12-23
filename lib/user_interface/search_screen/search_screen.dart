@@ -15,10 +15,8 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchTextController = TextEditingController();
-  var _urutan = "Default";
   var _kategori = "Semua";
   List<String> kategori = ['Semua', 'Jas', 'Kebaya', 'Kemeja', 'Aksesoris'];
-  List<String> urutan = ['Default', 'Terbaru', 'Terlama'];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,47 +96,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     setState(() {
                                       _kategori = value!;
                                     });
-                                  }),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: size.width / 30,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Text('Urutan :',
-                                style: Theme.of(context).textTheme.bodyText2),
-                          ),
-                          Container(
-                            height: 30,
-                            decoration: BoxDecoration(
-                                color: primaryColor900,
-                                borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.only(
-                              left: size.width / 30,
-                            ),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                  elevation: 0,
-                                  hint: Text(_urutan,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!
-                                          .copyWith(color: Colors.white)),
-                                  items: urutan.map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                        value: value, child: Text(value));
-                                  }).toList(),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _urutan = value!;
-                                    });
+                                    snapshot.filterClothes(_kategori);
                                   }),
                             ),
                           ),

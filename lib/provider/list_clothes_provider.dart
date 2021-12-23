@@ -49,4 +49,27 @@ class ListClothesProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  filterClothes(String category) async {
+    _state = ResultState.isLoading;
+    notifyListeners();
+    try {
+      List<ListClothes> snapshot = [];
+      if (category == "Semua") {
+        snapshot = await clothesService.getListClothes();
+      } else {
+        snapshot =
+            await clothesService.getClothesByCategory(category.toLowerCase());
+      }
+      if (snapshot.isNotEmpty) {
+        _listClothes = snapshot;
+        _state = ResultState.hasData;
+      } else {
+        _state = ResultState.noData;
+      }
+    } catch (e) {
+      _state = ResultState.isError;
+    }
+    notifyListeners();
+  }
 }

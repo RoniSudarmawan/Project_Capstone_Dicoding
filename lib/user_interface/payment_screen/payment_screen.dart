@@ -1,8 +1,21 @@
+import 'package:capstone_project/model/data_clothes_model.dart';
+import 'package:capstone_project/provider/payment_provider.dart';
 import 'package:capstone_project/style/color_style.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({Key? key}) : super(key: key);
+  DataClothes dataClothes;
+  String clothesSize;
+  int price;
+  int duration;
+  PaymentScreen(
+      {Key? key,
+      required this.dataClothes,
+      required this.clothesSize,
+      required this.price,
+      required this.duration})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +57,7 @@ class PaymentScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Image.network(
-                    "https://images.unsplash.com/photo-1592878897400-43fb1f1cc324?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+                    dataClothes.productImageUrl!,
                     width: 160,
                   ),
                 ),
@@ -52,15 +65,23 @@ class PaymentScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Green Suit",
+                      dataClothes.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     Text(
-                      "Rp. 100.000 / hari",
+                      "Rp. " +
+                          price.toString() +
+                          " (" +
+                          duration.toString() +
+                          " hari)",
                       style: Theme.of(context)
                           .textTheme
-                          .headline6!
-                          .copyWith(color: primaryColor100),
+                          .subtitle1!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Size : " + clothesSize,
+                      style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ],
                 )
@@ -94,7 +115,7 @@ class PaymentScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(bottom: 8.0, top: 4.0, left: 16),
                   child: Text("JnE - Rp. 10.500",
-                      style: Theme.of(context).textTheme.headline6),
+                      style: Theme.of(context).textTheme.subtitle1),
                 ),
               ],
             ),
@@ -126,7 +147,7 @@ class PaymentScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(bottom: 8.0, top: 4.0, left: 16),
                   child: Text("Transfer Bank - Rp. 1.500",
-                      style: Theme.of(context).textTheme.headline6),
+                      style: Theme.of(context).textTheme.subtitle1),
                 ),
               ],
             ),
@@ -168,7 +189,7 @@ class PaymentScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           bottom: 4.0, top: 8.0, right: 8),
                       child: Text(
-                        "Rp. 500.000",
+                        "Rp. " + price.toString(),
                         style: Theme.of(context)
                             .textTheme
                             .bodyText1!
@@ -277,7 +298,7 @@ class PaymentScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(
                           bottom: 8.0, top: 4.0, right: 8),
-                      child: Text("Rp. 511.000",
+                      child: Text("Rp. ${price + 10500 + 1500 + 1500}",
                           style: Theme.of(context)
                               .textTheme
                               .subtitle1!
@@ -301,6 +322,9 @@ class PaymentScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                   onPressed: () {
+                    Provider.of<PaymentProvider>(context, listen: false)
+                        .addRentData(dataClothes.id, clothesSize, duration,
+                            (price + 10500 + 1500 + 1500));
                     Navigator.pushNamed(context, '/PageHelper');
                   },
                   style: ElevatedButton.styleFrom(

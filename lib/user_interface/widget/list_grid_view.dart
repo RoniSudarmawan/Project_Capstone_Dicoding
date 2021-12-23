@@ -38,7 +38,7 @@ class ListGridView extends StatelessWidget {
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15)),
                           child: Image.network(
-                            "https://images.unsplash.com/photo-1592878897400-43fb1f1cc324?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80}",
+                            clothes[index].productImageUrl!,
                             fit: BoxFit.cover,
                           ),
                         ),

@@ -1,8 +1,12 @@
+import 'package:capstone_project/model/list_clothes_model.dart';
 import 'package:capstone_project/style/color_style.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalList extends StatelessWidget {
-  const HorizontalList({Key? key}) : super(key: key);
+  final List<ListClothes> clothes;
+  final BuildContext context;
+  const HorizontalList({Key? key, required this.clothes, required this.context})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -11,11 +15,12 @@ class HorizontalList extends StatelessWidget {
       height: 250,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 15,
+          itemCount: clothes.length,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/DetailScreen');
+                Navigator.pushNamed(context, '/DetailScreen',
+                    arguments: clothes[index].id);
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -37,7 +42,7 @@ class HorizontalList extends StatelessWidget {
                                 topLeft: Radius.circular(15),
                                 topRight: Radius.circular(15)),
                             child: Image.network(
-                              "https://images.unsplash.com/photo-1592878897400-43fb1f1cc324?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+                              clothes[index].productImageUrl!,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -45,7 +50,7 @@ class HorizontalList extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 8.0, bottom: 2.0, top: 10.0),
-                          child: Text("Green Suit",
+                          child: Text(clothes[index].name,
                               style: Theme.of(context).textTheme.subtitle2),
                         ),
                         Row(
@@ -54,7 +59,10 @@ class HorizontalList extends StatelessWidget {
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                              child: Text("Rp. 100.000/hari",
+                              child: Text(
+                                  "Rp. " +
+                                      clothes[index].price.toString() +
+                                      "/hari",
                                   style: Theme.of(context).textTheme.caption),
                             ),
                             Padding(

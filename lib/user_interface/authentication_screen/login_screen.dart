@@ -27,45 +27,47 @@ class _LoginScreenState extends State<LoginScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: primaryColor900,
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 6.0, top: 8.0),
-                  child: IconButton(
-                      color: primaryColor600,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios_rounded,
-                        color: primaryColor100,
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 6.0, top: 36.0),
+                    child: IconButton(
+                        color: primaryColor600,
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, '/LandingScreen');
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color: primaryColor100,
+                        )),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.only(bottom: 40, top: 24),
+                      child: Container(
+                        child: Icon(
+                          Icons.all_inclusive,
+                          size: 100,
+                          color: primaryColor100,
+                        ),
                       )),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 40, top: 24),
-                    child: Container(
-                      child: Icon(
-                        Icons.all_inclusive,
-                        size: 100,
-                        color: primaryColor100,
-                      ),
-                    )),
-              ],
-            ),
-            Expanded(
-              child: Container(
+                ],
+              ),
+              Container(
                 width: size.width,
+                height: size.height / 1.4,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(45)),
                   color: Colors.white,
@@ -182,32 +184,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: IconButton(
-                                    onPressed: () async {
-                                      final provider =
-                                          Provider.of<AuthenticationProvider>(
-                                              context,
-                                              listen: false);
-                                      dynamic result =
-                                          await provider.googleLogin();
-                                      if (result != null) {
-                                        Navigator.pushReplacementNamed(
-                                            context, '/PageHelper');
-                                      }
-                                    },
-                                    icon: const Icon(
-                                      Icons.flight,
-                                      size: 50,
+                                child: InkWell(
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/icons8-google-96.png",
+                                      ),
+                                      fit: BoxFit.cover,
                                     )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.flight,
-                                      size: 50,
-                                    )),
+                                  ),
+                                  onTap: () async {
+                                    final provider =
+                                        Provider.of<AuthenticationProvider>(
+                                            context,
+                                            listen: false);
+                                    await provider.googleLogin();
+                                    Navigator.pushReplacementNamed(
+                                        context, '/PageHelper');
+                                  },
+                                ),
                               ),
                             ],
                           ),
@@ -242,9 +240,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

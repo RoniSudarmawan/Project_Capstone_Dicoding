@@ -40,13 +40,31 @@ class ClothesService {
     return _clothesList;
   }
 
-  // Future<List<ListClothes>> getListClothesFilter(
-  //     String category, String SortBy) async {}
+  Future<List<ListClothes>> getClothesByCategory(String category) async {
+    final filteredData =
+        (await _clothesData.where("category", isEqualTo: category).get());
+
+    return filteredData.docs.map((e) => ListClothes.fromObject(e)).toList();
+  }
+
+  Future<List<ListClothes>> getListClothesByShopName(String shopName) async {
+    final filteredData =
+        (await _clothesData.where("shopName", isEqualTo: shopName).get());
+
+    return filteredData.docs.map((e) => ListClothes.fromObject(e)).toList();
+  }
+
+  Future<List<ListClothes>> getListByNewestCreated() async {
+    final filteredData =
+        (await _clothesData.orderBy('createDate', descending: false).get());
+
+    return filteredData.docs.map((e) => ListClothes.fromObject(e)).toList();
+  }
 
   Future<DataClothes> getDetailData(String id) async {
     final snapshotData = await _clothesData.doc(id).get();
     final snapshotReview =
-        await _clothesData.doc(id).collection("reviews").get();
+        await _clothesData.doc(id).collection("review").get();
     DataClothes _clothesDetail =
         DataClothes.fromObject(snapshotData, snapshotReview);
     return _clothesDetail;

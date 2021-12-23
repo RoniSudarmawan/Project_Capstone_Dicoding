@@ -12,7 +12,7 @@ class ListClothes {
   late Timestamp createDate;
 
   ListClothes.fromObject(QueryDocumentSnapshot<Map<String, dynamic>> data) {
-    id = data["id"];
+    id = data.id;
     name = data["name"];
     price = data["price"];
     category = data["category"];

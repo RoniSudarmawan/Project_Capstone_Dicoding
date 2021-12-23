@@ -1,7 +1,6 @@
 import 'package:capstone_project/model/data_user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Authentication {
@@ -39,7 +38,7 @@ class Authentication {
     }
   }
 
-  Future<User?> signInWithGoogle({required BuildContext context}) async {
+  Future<User?> signInWithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -63,7 +62,7 @@ class Authentication {
 
         final user = userCredential.user;
         _inputUserDataWithoutBornDate(
-            user!.uid, user.email!, user.displayName!);
+            user!.uid, user.displayName!, user.email!);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           print(e.code);
@@ -84,9 +83,8 @@ class Authentication {
     return DataUser.fromObject(snapshot);
   }
 
-  Future<String> userSignOut() async {
+  Future<User?> userSignOut() async {
     await firebaseAuth.signOut();
-    return 'User Log Out';
   }
 
   String? getUserId() {

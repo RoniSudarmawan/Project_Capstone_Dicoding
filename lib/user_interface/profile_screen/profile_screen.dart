@@ -1,3 +1,4 @@
+import 'package:capstone_project/database/authentication.dart';
 import 'package:capstone_project/helper/result_state.dart';
 import 'package:capstone_project/provider/authentication_provider.dart';
 import 'package:capstone_project/style/color_style.dart';
@@ -216,14 +217,14 @@ class ProfileScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 28.0),
                             child: Text(
-                              "Ganti Password",
+                              "Ubah Profil",
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
                           ),
                           IconButton(
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, '/ChangePasswordScreen');
+                                    context, '/EditProfileScreen');
                               },
                               icon: const Icon(
                                 Icons.arrow_forward_ios_rounded,
@@ -250,12 +251,10 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                              onPressed: () async {
-                                final result =
-                                    Provider.of<AuthenticationProvider>(context,
-                                        listen: false);
-                                await result.signOut();
-                                Navigator.pushNamed(context, '/LoginScreen');
+                              onPressed: () {
+                                Authentication().userSignOut();
+                                Navigator.pushReplacementNamed(
+                                    context, '/LandingScreen');
                               },
                               icon: const Icon(
                                 Icons.arrow_forward_ios_rounded,
@@ -272,9 +271,19 @@ class ProfileScreen extends StatelessWidget {
           );
         } else {
           return Center(
-              child: Text(
-            "Silahkan Dibuka Ulang!",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+              child: Column(
+            children: [
+              Text(
+                "Terjadi Error, Silahkan Dibuka Ulang!",
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Authentication().userSignOut();
+                    Navigator.pushReplacementNamed(context, '/LandingScreen');
+                  },
+                  child: Text("LogOut"))
+            ],
           ));
         }
       }),

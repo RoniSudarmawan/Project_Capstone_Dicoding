@@ -27,7 +27,7 @@ class DataClothes {
 
   DataClothes.fromObject(DocumentSnapshot<Map<String, dynamic>> data,
       QuerySnapshot<Map<String, dynamic>> reviewData) {
-    id = data["id"];
+    id = data.id;
     name = data["name"];
     price = data["price"];
     category = data["category"];
