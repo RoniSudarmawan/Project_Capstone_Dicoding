@@ -16,6 +16,7 @@ Mencari pakaian formal yang sesuai keinginan untuk disewa sangat menyita waktu u
 - Database => [Firebase Cloud Database](https://firebase.flutter.dev/)
 - Image => [Unsplash](https://unsplash.com/)
 - Font => [Google Font](https://fonts.google.com/)
+- Desain User Interface => [Behance](https://www.behance.net/gallery/123155553/Placehunter-Mobile-App-UXUI?tracking_source=search_projects_recommended%7Clist%20place)
 
 ## Library Flutter yang Digunakan
 - [Cupertino Icons](https://pub.dev/packages/cupertino_icons)
