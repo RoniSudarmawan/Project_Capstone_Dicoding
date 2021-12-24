@@ -16,7 +16,6 @@ class RentService {
       final clothesData = await _clothesData.doc(items["clothesId"]).get();
       dataRentHistory.add(DataRentHistory.fromObject(items, clothesData));
     }
-    ;
     return dataRentHistory;
   }
 

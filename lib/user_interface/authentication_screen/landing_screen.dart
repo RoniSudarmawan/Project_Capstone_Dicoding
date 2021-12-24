@@ -20,12 +20,10 @@ class LandingScreen extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.only(bottom: 24, top: 24),
-                    child: Container(
-                      child: Icon(
-                        Icons.all_inclusive,
-                        size: 130,
-                        color: primaryColor100,
-                      ),
+                    child: Icon(
+                      Icons.all_inclusive,
+                      size: 130,
+                      color: primaryColor100,
                     )),
               ],
             ),
@@ -69,7 +67,7 @@ class LandingScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/SignupScreen');
                 },
                 style: ElevatedButton.styleFrom(
-                    side: BorderSide(
+                    side: const BorderSide(
                       color: Colors.white,
                     ),
                     primary: primaryColor900,

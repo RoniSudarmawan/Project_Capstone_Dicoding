@@ -31,7 +31,6 @@ class DetailScreen extends StatelessWidget {
         child: Consumer<DetailClothesProvider>(
             builder: (context, snapshot, child) {
           if (snapshot.state == ResultState.hasData) {
-            print(snapshot.clothesData.review.length);
             return Scaffold(
               backgroundColor: surface,
               body: NestedScrollView(
@@ -198,7 +197,7 @@ class DetailScreen extends StatelessWidget {
                         height: 7,
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         color: Colors.white,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,7 +225,7 @@ class DetailScreen extends StatelessWidget {
                         height: 7,
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         color: Colors.white,
                         width: size.width,
                         child: Column(
@@ -311,7 +310,7 @@ class DetailScreen extends StatelessWidget {
                 builder: (context, snapshot, child) {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Container(
+                child: SizedBox(
                   height: size.height / 3.2,
                   child: Column(
                     children: [

@@ -65,10 +65,10 @@ class MyApp extends StatelessWidget {
             }
           }),
           routes: {
-            '/LandingScreen': (context) => LandingScreen(),
-            '/LoginScreen': (context) => LoginScreen(),
+            '/LandingScreen': (context) => const LandingScreen(),
+            '/LoginScreen': (context) => const LoginScreen(),
             '/SignupScreen': (context) => SignupScreen(),
-            '/PageHelper': (context) => PageHelper(),
+            '/PageHelper': (context) => const PageHelper(),
             '/PaymentScreen': (context) => PaymentScreen(
                 dataClothes:
                     ModalRoute.of(context)?.settings.arguments as DataClothes,
@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
                     ModalRoute.of(context)?.settings.arguments as String,
                 price: ModalRoute.of(context)?.settings.arguments as int,
                 duration: ModalRoute.of(context)?.settings.arguments as int),
-            '/HomepageScreen': (context) => HomepageScreen(),
+            '/HomepageScreen': (context) => const HomepageScreen(),
             '/DetailScreen': (context) => DetailScreen(
                   clothesId:
                       ModalRoute.of(context)?.settings.arguments as String,
@@ -88,11 +88,11 @@ class MyApp extends StatelessWidget {
                       as BuildContext,
                   title: ModalRoute.of(context)?.settings.arguments as String,
                 ),
-            '/ProfileScreen': (context) => ProfileScreen(),
-            '/NotificationScreen': (context) => RentHistoryScreen(),
+            '/ProfileScreen': (context) => const ProfileScreen(),
+            '/NotificationScreen': (context) => const RentHistoryScreen(),
             '/EditProfileScreen': (context) => EditProfileScreen(),
-            '/SearchScreen': (context) => SearchScreen(),
-            '/SettingScreen': (context) => SettingScreen(),
+            '/SearchScreen': (context) => const SearchScreen(),
+            '/SettingScreen': (context) => const SettingScreen(),
           },
         );
       }),

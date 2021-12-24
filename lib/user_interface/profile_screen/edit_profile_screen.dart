@@ -217,7 +217,7 @@ class EditProfileScreen extends StatelessWidget {
     );
   }
 
-  Future<Null> _selectedDate(BuildContext context) async {
+  Future<void> _selectedDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,

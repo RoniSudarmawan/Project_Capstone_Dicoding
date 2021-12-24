@@ -47,7 +47,7 @@ class PaymentScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
           Container(
@@ -88,7 +88,7 @@ class PaymentScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
           Container(
@@ -120,7 +120,7 @@ class PaymentScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
           Container(
@@ -152,7 +152,7 @@ class PaymentScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
           Container(

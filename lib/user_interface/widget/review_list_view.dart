@@ -10,7 +10,6 @@ class ReviewListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(reviewData.length);
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
         return Card(

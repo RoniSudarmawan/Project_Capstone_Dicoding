@@ -27,7 +27,7 @@ class ListGridView extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     color: surface,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    borderRadius: BorderRadius.all(const Radius.circular(15)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,

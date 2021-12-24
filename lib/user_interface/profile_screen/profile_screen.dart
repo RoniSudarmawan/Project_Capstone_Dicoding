@@ -311,7 +311,7 @@ class ProfileScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: primaryColor100,
                   ),
-                  child: Text("LogOut"))
+                  child: const Text("LogOut"))
             ],
           ));
         }

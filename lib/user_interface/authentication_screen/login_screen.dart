@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -56,12 +57,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Padding(
                       padding: const EdgeInsets.only(bottom: 40, top: 24),
-                      child: Container(
-                        child: Icon(
-                          Icons.all_inclusive,
-                          size: 100,
-                          color: primaryColor100,
-                        ),
+                      child: Icon(
+                        Icons.all_inclusive,
+                        size: 100,
+                        color: primaryColor100,
                       )),
                 ],
               ),
@@ -145,26 +144,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                             context, '/PageHelper');
                                       }
                                     } on FirebaseAuthException catch (e) {
-                                      late String message;
                                       if (e.code == 'user-not-found') {
                                         ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
+                                            .showSnackBar(const SnackBar(
                                                 content: Text(
                                                     "User tidak ditemukan")));
                                       } else if (e.code == 'wrong-password') {
                                         ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
+                                            .showSnackBar(const SnackBar(
                                                 content: Text(
                                                     "Password Anda Salah")));
                                       } else {
                                         ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
+                                            .showSnackBar(const SnackBar(
                                                 content: Text(
                                                     "User tidak ditemukan")));
                                       }
                                     } catch (e) {
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
+                                          .showSnackBar(const SnackBar(
                                               content: Text("Terjadi Error")));
                                     }
                                   }

@@ -168,7 +168,7 @@ class SignupScreen extends StatelessWidget {
                                       }
                                     } catch (e) {
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
+                                          .showSnackBar(const SnackBar(
                                               content: Text("Terjadi Error")));
                                     }
                                   }
@@ -225,7 +225,7 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  Future<Null> _selectedDate(BuildContext context) async {
+  Future<void> _selectedDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,

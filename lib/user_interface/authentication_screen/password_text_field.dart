@@ -23,17 +23,18 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       controller: widget.passwordTextController,
       obscureText: _isPasswordVisible,
       validator: (String? value) {
-        if (value!.isEmpty)
+        if (value!.isEmpty) {
           return "Silahkan isi password Anda";
-        else if (value.length < 6)
+        } else if (value.length < 6) {
           return "Password harus lebih dari 6 karakter";
-        else
+        } else {
           return null;
+        }
       },
       decoration: InputDecoration(
         hintText: "Password",
         suffixIcon: Padding(
-          padding: EdgeInsets.only(top: 5.0),
+          padding: const EdgeInsets.only(top: 5.0),
           child: IconButton(
               onPressed: () {
                 setState(() {

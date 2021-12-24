@@ -18,7 +18,7 @@ class Authentication {
         bornDate,
       );
       return userCredential.user?.uid;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       rethrow;
     } catch (e) {
       rethrow;
@@ -31,7 +31,7 @@ class Authentication {
           email: email, password: password);
       print(userCredential.user?.uid);
       return userCredential.user?.uid;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       rethrow;
     } catch (e) {
       rethrow;
