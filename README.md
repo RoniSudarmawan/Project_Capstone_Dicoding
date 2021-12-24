@@ -29,3 +29,14 @@ Mencari pakaian formal yang sesuai keinginan untuk disewa sangat menyita waktu u
 - [Provider](https://pub.dev/packages/provider)
 - [Google Sign In](https://pub.dev/packages/google_sign_in)
 - [Shared Preference](https://pub.dev/packages/shared_preferences)
+
+## Cara Menggunakan Aplikasi Clothal
+1. Jalankan Perintah Berikut Ke Terminal:
+```
+git clone https://github.com/RoniSudarmawan/Project_Capstone_Dicoding.git
+```
+2. Apabila terdapat Error pada aplikasi, maka jalankan perintah:
+```
+flutter pub get
+```
+3. Aplikasi Siap Untuk Digunakan
