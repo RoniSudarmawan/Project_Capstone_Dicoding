@@ -1,16 +1,29 @@
-# capstone_project
+# CLOTHAL
+Mencari pakaian formal yang sesuai keinginan untuk disewa sangat menyita waktu untuk dilakukan. Apalagi di musim wisuda, tingkat penyewaan pakaian formal tersebut menjadi sangat meningkat. Maka dari itu, pengembang memiliki ide untuk membuat aplikasi berbasis mobile dengan nama “Clothal”. Dengan fitur seperti pencarian pakaian dan menampilkan produk-produk dari toko yang sama, aplikasi “Clothal” diharapkan mampu mempermudah masyarakat dalam proses penyewaan pakaian formal, seperti jas dan kebaya.
 
-This is for Capstone Project Dicoding
+## Fitur yang Disediakan
+- Login Menggunakan Email dan Google Mail
+- Pencarian Produk Bedasarkan Nama
+- Pencarian Produk Bedasarkan Kategori
+- Daftar Produk Terbaru
+- Daftar Produk Rekomendasi
+- Daftar Produk Dengan Toko yang Sama
+- Tema Darkmode
 
-## Getting Started
+## Resource dari Aplikasi
+- Bahasa Pemrograman =>[Dart](https://dart.dev/)
+- Framework => [Flutter](https://flutter.dev/) 
+- Database => [Firebase Cloud Database](https://firebase.flutter.dev/)
+- Image => [Unsplash](https://unsplash.com/)
+- Font => [Google Font](https://fonts.google.com/)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Library Flutter yang Digunakan
+- [Cupertino Icons](https://pub.dev/packages/cupertino_icons)
+- [Google Fonts](https://pub.dev/packages/google_fonts)
+- [Flutter Snake Navigation Bar](https://pub.dev/packages/flutter_snake_navigationbar)
+- [Firebase Core](https://pub.dev/packages/firebase_core)
+- [Firebase Auth](https://pub.dev/packages/firebase_auth)
+- [Cloud Firestore](https://pub.dev/packages/cloud_firestore)
+- [Provider](https://pub.dev/packages/provider)
+- [Google Sign In](https://pub.dev/packages/google_sign_in)
+- [Shared Preference](https://pub.dev/packages/shared_preferences)
