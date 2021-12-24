@@ -24,37 +24,38 @@ class EditProfileScreen extends StatelessWidget {
             .toString();
         phoneTextController.text = snapshot.user.phoneNumber ?? "";
         addressTextController.text = snapshot.user.address ?? "";
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 32.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 6.0),
-                    child: IconButton(
-                        color: primaryColor600,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          color: primaryColor100,
-                        )),
-                  ),
-                  Text(
-                    "Ubah Profil",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: primaryColor100),
-                  )
-                ],
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 6.0),
+                      child: IconButton(
+                          color: primaryColor600,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_ios_rounded,
+                            color: primaryColor100,
+                          )),
+                    ),
+                    Text(
+                      "Ubah Profil",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: primaryColor100),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
+              Container(
                 width: size.width,
+                height: size.height / 1.1,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(45)),
                   color: Colors.white,
@@ -79,6 +80,10 @@ class EditProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 16.0),
                         child: TextFormField(
                           controller: nameTextController,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(color: Colors.black),
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide:
@@ -102,6 +107,10 @@ class EditProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 16.0),
                         child: TextFormField(
                           controller: phoneTextController,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(color: Colors.black),
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide:
@@ -126,6 +135,10 @@ class EditProfileScreen extends StatelessWidget {
                         child: TextFormField(
                           controller: bornDateTextController,
                           onTap: () => _selectedDate(context),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(color: Colors.black),
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide:
@@ -149,6 +162,10 @@ class EditProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: TextFormField(
                           controller: addressTextController,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(color: Colors.black),
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide:
@@ -192,9 +209,9 @@ class EditProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         );
       }),
     );

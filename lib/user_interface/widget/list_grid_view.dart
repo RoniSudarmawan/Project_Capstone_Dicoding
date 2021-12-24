@@ -47,7 +47,10 @@ class ListGridView extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 8.0, bottom: 2.0, top: 10.0),
                         child: Text(clothes[index].name,
-                            style: Theme.of(context).textTheme.subtitle2),
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(color: Colors.black)),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +62,10 @@ class ListGridView extends StatelessWidget {
                                 "Rp. " +
                                     clothes[index].price.toString() +
                                     "/hari",
-                                style: Theme.of(context).textTheme.caption),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(color: Colors.black)),
                           ),
                           Padding(
                             padding:

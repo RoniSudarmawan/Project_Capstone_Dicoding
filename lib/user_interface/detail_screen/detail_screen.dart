@@ -75,8 +75,10 @@ class DetailScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     snapshot.clothesData.name,
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline6!
+                                        .copyWith(color: Colors.black),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -88,7 +90,8 @@ class DetailScreen extends StatelessWidget {
                                         Text("4.5/5",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle1),
+                                                .subtitle1!
+                                                .copyWith(color: Colors.black)),
                                       ],
                                     ),
                                   ),
@@ -101,7 +104,9 @@ class DetailScreen extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .subtitle1!
-                                    .copyWith(fontWeight: FontWeight.w800),
+                                    .copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.black),
                               ),
                             ],
                           ),
@@ -124,11 +129,15 @@ class DetailScreen extends StatelessWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1!
-                                        .copyWith(fontWeight: FontWeight.w600)),
+                                        .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black)),
                               ),
                               Text(snapshot.clothesData.description,
-                                  style:
-                                      Theme.of(context).textTheme.bodyText2!),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2!
+                                      .copyWith(color: Colors.black)),
                             ],
                           ),
                         ),
@@ -166,13 +175,17 @@ class DetailScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     snapshot.clothesData.shopName,
-                                    style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle1!
+                                        .copyWith(color: Colors.black),
                                   ),
                                   Text(
                                     snapshot.clothesData.shopLocation,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.black),
                                   )
                                 ],
                               )
@@ -197,7 +210,9 @@ class DetailScreen extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1!
-                                      .copyWith(fontWeight: FontWeight.w600)),
+                                      .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black)),
                             ),
                             HorizontalList(
                               context: context,
@@ -224,7 +239,9 @@ class DetailScreen extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText1!
-                                      .copyWith(fontWeight: FontWeight.w600)),
+                                      .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black)),
                             ),
                             // Flexible(
                             //   child: ReviewListView(
@@ -353,7 +370,9 @@ class DetailScreen extends StatelessWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1!
-                                        .copyWith(fontWeight: FontWeight.bold),
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
                                   ),
                                   onTap: () {
                                     snapshot.setDuration = -1;
@@ -362,7 +381,10 @@ class DetailScreen extends StatelessWidget {
                               ),
                               Text(
                                 snapshot.duration.toString() + " hari",
-                                style: Theme.of(context).textTheme.bodyText2,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(color: Colors.black),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 12.0),
@@ -372,7 +394,9 @@ class DetailScreen extends StatelessWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1!
-                                        .copyWith(fontWeight: FontWeight.bold),
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
                                   ),
                                   onTap: () {
                                     snapshot.setDuration = 1;

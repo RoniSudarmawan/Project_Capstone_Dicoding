@@ -130,32 +130,43 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.only(top: 24.0),
                             child: ElevatedButton(
                                 onPressed: () async {
-                                  try {
-                                    final result =
-                                        Provider.of<AuthenticationProvider>(
-                                            context,
-                                            listen: false);
-                                    await result.login(
-                                      emailTextController.text,
-                                      passwordTextController.text,
-                                    );
-                                    if (result.isSignIn) {
-                                      Navigator.pushReplacementNamed(
-                                          context, '/PageHelper');
+                                  if (_formKey.currentState!.validate()) {
+                                    try {
+                                      final result =
+                                          Provider.of<AuthenticationProvider>(
+                                              context,
+                                              listen: false);
+                                      await result.login(
+                                        emailTextController.text,
+                                        passwordTextController.text,
+                                      );
+                                      if (result.isSignIn) {
+                                        Navigator.pushReplacementNamed(
+                                            context, '/PageHelper');
+                                      }
+                                    } on FirebaseAuthException catch (e) {
+                                      late String message;
+                                      if (e.code == 'user-not-found') {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "User tidak ditemukan")));
+                                      } else if (e.code == 'wrong-password') {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "Password Anda Salah")));
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "User tidak ditemukan")));
+                                      }
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text("Terjadi Error")));
                                     }
-                                  } on FirebaseAuthException catch (e) {
-                                    late String message;
-                                    if (e.code == 'user-not-found') {
-                                      message = 'No user found for that email.';
-                                    } else if (e.code == 'wrong-password') {
-                                      message =
-                                          'Wrong password provided for that user.';
-                                    } else {
-                                      message = e.toString();
-                                    }
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text(e.toString())));
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(

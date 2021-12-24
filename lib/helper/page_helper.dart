@@ -1,7 +1,7 @@
 import 'package:capstone_project/style/color_style.dart';
 import 'package:capstone_project/user_interface/homepage_screen/homepage_screen.dart';
-import 'package:capstone_project/user_interface/rent_history_screen/rent_history_screen.dart';
 import 'package:capstone_project/user_interface/profile_screen/profile_screen.dart';
+import 'package:capstone_project/user_interface/rent_history_screen/rent_history_screen.dart';
 import 'package:capstone_project/user_interface/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -74,7 +74,7 @@ class _PageHelperState extends State<PageHelper> {
           BottomNavigationBarItem(
               icon: Icon(Icons.search_rounded), label: 'Explore'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_active), label: 'Notification'),
+              icon: Icon(Icons.history), label: 'Rent History'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         selectedLabelStyle: const TextStyle(fontSize: 14),

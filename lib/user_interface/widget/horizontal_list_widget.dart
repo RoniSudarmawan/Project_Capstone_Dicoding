@@ -51,7 +51,10 @@ class HorizontalList extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 8.0, bottom: 2.0, top: 10.0),
                           child: Text(clothes[index].name,
-                              style: Theme.of(context).textTheme.subtitle2),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(color: Colors.black)),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

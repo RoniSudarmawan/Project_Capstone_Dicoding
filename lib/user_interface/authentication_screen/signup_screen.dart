@@ -149,25 +149,28 @@ class SignupScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 24.0),
                             child: ElevatedButton(
                                 onPressed: () async {
-                                  try {
-                                    final result =
-                                        Provider.of<AuthenticationProvider>(
-                                            context,
-                                            listen: false);
-                                    await result.signUp(
-                                      emailTextController.text,
-                                      passwordTextController.text,
-                                      nameTextController.text,
-                                      DateTime.parse(
-                                          bornDateTextController.text),
-                                    );
-                                    if (result.isSignIn) {
-                                      Navigator.pushReplacementNamed(
-                                          context, '/LoginScreen');
+                                  if (_formKey.currentState!.validate()) {
+                                    try {
+                                      final result =
+                                          Provider.of<AuthenticationProvider>(
+                                              context,
+                                              listen: false);
+                                      await result.signUp(
+                                        emailTextController.text,
+                                        passwordTextController.text,
+                                        nameTextController.text,
+                                        DateTime.parse(
+                                            bornDateTextController.text),
+                                      );
+                                      if (result.isSignIn) {
+                                        Navigator.pushReplacementNamed(
+                                            context, '/LoginScreen');
+                                      }
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text("Terjadi Error")));
                                     }
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text(e.toString())));
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(

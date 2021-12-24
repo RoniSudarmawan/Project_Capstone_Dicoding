@@ -81,7 +81,10 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Text(
                               snapshot.user.name,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(color: Colors.black),
                             ),
                             Divider(
                               thickness: 2,
@@ -100,7 +103,10 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Text(
                               snapshot.user.email,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(color: Colors.black),
                             ),
                             Divider(
                               thickness: 2,
@@ -120,13 +126,17 @@ class ProfileScreen extends StatelessWidget {
                             snapshot.user.phoneNumber == null
                                 ? Text(
                                     "-",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.black),
                                   )
                                 : Text(
                                     snapshot.user.phoneNumber!,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.black),
                                   ),
                             Divider(
                               thickness: 2,
@@ -145,7 +155,10 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Text(
                               snapshot.user.bornDate!.toDate().toString(),
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(color: Colors.black),
                             ),
                             Divider(
                               thickness: 2,
@@ -165,13 +178,17 @@ class ProfileScreen extends StatelessWidget {
                             snapshot.user.phoneNumber == null
                                 ? Text(
                                     "-",
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.black),
                                   )
                                 : Text(
                                     snapshot.user.address!,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.black),
                                   ),
                             Divider(
                               thickness: 2,
@@ -191,14 +208,16 @@ class ProfileScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 28.0),
                             child: Text(
-                              "Ubah Profil",
-                              style: Theme.of(context).textTheme.bodyText2,
+                              "Setting",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(color: Colors.black),
                             ),
                           ),
                           IconButton(
                               onPressed: () {
-                                Navigator.pushNamed(
-                                    context, '/EditProfileScreen');
+                                Navigator.pushNamed(context, '/SettingScreen');
                               },
                               icon: const Icon(
                                 Icons.arrow_forward_ios_rounded,
@@ -218,7 +237,10 @@ class ProfileScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 28.0),
                             child: Text(
                               "Ubah Profil",
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(color: Colors.black),
                             ),
                           ),
                           IconButton(
@@ -272,16 +294,23 @@ class ProfileScreen extends StatelessWidget {
         } else {
           return Center(
               child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Terjadi Error, Silahkan Dibuka Ulang!",
-                style: TextStyle(color: Colors.white, fontSize: 30),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 12.0),
+                child: Text(
+                  "Terjadi Error, Silahkan Dibuka Ulang!",
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
               ),
               ElevatedButton(
                   onPressed: () {
                     Authentication().userSignOut();
                     Navigator.pushReplacementNamed(context, '/LandingScreen');
                   },
+                  style: ElevatedButton.styleFrom(
+                    primary: primaryColor100,
+                  ),
                   child: Text("LogOut"))
             ],
           ));

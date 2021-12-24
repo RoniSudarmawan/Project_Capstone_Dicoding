@@ -76,12 +76,15 @@ class HomepageScreen extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          MaterialPageRoute(
-                              builder: (context) => NewestProductScreen(
-                                    context: context,
-                                    clothes: snapshot.listClothesRecommended,
-                                    title: "Recommended Suit For You",
-                                  ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NewestProductScreen(
+                                        context: context,
+                                        clothes:
+                                            snapshot.listClothesRecommended,
+                                        title: "Recommended Suit For You",
+                                      )));
                         },
                         child: Text(
                           "see all",

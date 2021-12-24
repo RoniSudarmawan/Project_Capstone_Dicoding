@@ -5,6 +5,7 @@ class DataRentHistory {
     required this.clothesId,
     required this.userId,
     required this.clothesName,
+    this.productImageUrl,
     required this.size,
     required this.total,
     required this.rentDate,
@@ -13,6 +14,7 @@ class DataRentHistory {
 
   final String clothesId;
   final String clothesName;
+  final String? productImageUrl;
   final String userId;
   final String size;
   final int total;
@@ -25,6 +27,7 @@ class DataRentHistory {
       DataRentHistory(
         clothesId: data["clothesId"],
         clothesName: clothes["name"],
+        productImageUrl: clothes['productImageUrl'],
         userId: data["userId"],
         size: data["size"],
         total: data["total"],
@@ -36,6 +39,7 @@ class DataRentHistory {
         "clothesId": clothesId,
         "userId": userId,
         "name": clothesName,
+        "productImageUrl": productImageUrl,
         "size": size,
         "total": total,
         "rentDate": rentDate,
