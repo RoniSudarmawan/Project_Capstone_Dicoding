@@ -69,7 +69,10 @@ class _SearchScreenState extends State<SearchScreen> {
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
                             child: Text('Kategori :',
-                                style: Theme.of(context).textTheme.bodyText2),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(color: Colors.black)),
                           ),
                           Container(
                             height: 30,

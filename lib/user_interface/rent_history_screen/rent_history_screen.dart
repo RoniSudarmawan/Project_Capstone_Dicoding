@@ -10,6 +10,7 @@ class RentHistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => RentHistoryProvider(rentService: RentService()),
       child: Scaffold(
@@ -22,7 +23,10 @@ class RentHistoryScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Rent History",
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: Colors.black),
                   )
                 ],
               ),
@@ -91,7 +95,7 @@ class RentHistoryScreen extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(right: 8.0),
                                           child: Text(
-                                            "Status: Sedang Dikirim",
+                                            "Status: -",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyText2!
@@ -118,19 +122,25 @@ class RentHistoryScreen extends StatelessWidget {
               } else if (snapshot.state == ResultState.isLoading) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Center(
-                      child: CircularProgressIndicator(),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height / 2.5),
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     ),
                   ],
                 );
               } else {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Center(
-                      child: Text(
-                          "Terjadi Error, Silahkan Buka Ulang Aplikasi Anda!"),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height / 2.5),
+                      child: const Center(
+                        child: Text(
+                            "Terjadi Error, Silahkan Buka Ulang Aplikasi Anda!"),
+                      ),
                     ),
                   ],
                 );

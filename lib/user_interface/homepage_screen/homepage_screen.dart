@@ -29,7 +29,10 @@ class HomepageScreen extends StatelessWidget {
                     Text(
                       "Hello user, \nWelcome To Clothal",
                       textAlign: TextAlign.end,
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(color: Colors.black),
                     ),
                     Icon(
                       Icons.person,
@@ -69,10 +72,8 @@ class HomepageScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Recommended Suit For You",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                            fontWeight: FontWeight.w600, color: Colors.black),
                       ),
                       TextButton(
                         onPressed: () {
@@ -110,10 +111,8 @@ class HomepageScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Newest Product",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                            fontWeight: FontWeight.w600, color: Colors.black),
                       ),
                       TextButton(
                         onPressed: () {
